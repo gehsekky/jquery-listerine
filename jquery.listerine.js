@@ -10,12 +10,9 @@
 		listitem_style: {
 			
 		},
-		listitem_style_hover: {
-		
-		},
 		wrapper_class: 'listerine-wrapper',
 		column_class: 'listerine-column',
-		listitem_class: 'listerine-griditem', 
+		listitem_class: 'listerine-listitem', 
 		transform: 'columns',
 		listitem_hover: {
 			in: function () {
@@ -24,6 +21,9 @@
 			out: function () {
 			
 			}
+		},
+		listitem_click: function () {
+		
 		}
 	};
 	
@@ -39,7 +39,7 @@
 			var root = this;
 			switch(action) {
 				case 'initialize':
-					if ($('.' + options.wrapper_class, this).length === 0) {
+					if ($('.' + options.wrapper_class, root).length === 0) {
 						switch (options.transform) {
 							case 'columns':
 								(function (that) {
@@ -53,7 +53,10 @@
 											.css('width', Math.floor(100 / options.cols) + '%')
 											.css('float', 'left')
 											.css(options.column_style)
-											.append($(that).children().slice(0, num_items));
+											.append($(that).children().slice(0, num_items)
+														.addClass(options.listitem_class)
+														.css(options.listitem_style)
+													);
 										
 										fragment.appendChild($col[0]);
 									}
@@ -69,7 +72,7 @@
 							case 'grid':
 								(function (that) {
 									// build wrapper
-									var $wrapper = $(document.createElement('div'))
+									$(document.createElement('div'))
 										.addClass(options.wrapper_class)
 										.css(options.wrapper_style)
 										.append($(that).children()
@@ -78,14 +81,17 @@
 													.css(options.listitem_style)
 												)
 										.appendTo(root);
-										
-									$('.' + options.listitem_class).hover(options.listitem_hover.in, options.listitem_hover.out);
 								})(this);
 								break;
 							default:
 								// unrecognized transform value
-								break;
 						}
+						
+						// attach handlers to listitems
+						$('.' + options.listitem_class)
+							.on('mouseenter', options.listitem_hover.in)
+							.on('mouseleave', options.listitem_hover.out)
+							.on('click', options.listitem_click);
 					}
 					break;
 				default:
