@@ -2,9 +2,7 @@ jquery.listerine.js
 
 @author gehsekky
 
-Listerine has 2 modes. One is “columns” which basically creates a user-set number of columns on the 
-page and then evenly distributes the list items between columns. The other mode is “grid” which is 
-more of a tile-like display.
+Listerine has 2 modes. One is “columns” which basically creates a user-set number of columns on the page and then evenly distributes the list items between columns. The other mode is “grid” which is more of a tile-like display.
 
 
 options (possible values):
