@@ -15,16 +15,17 @@
 		listitem_class: 'listerine-listitem', 
 		transform: 'columns',
 		listitem_hover: {
-			in: function () {
+			'in': function () {
 			
 			}, 
-			out: function () {
+			'out': function () {
 			
 			}
 		},
 		listitem_click: function () {
 		
-		}
+		}, 
+		clearfix: true
 	};
 	
 	$.fn.listerine = function(action, options) {
@@ -62,11 +63,15 @@
 									}
 									
 									// build wrapper for columns
-									$(document.createElement('div'))
+									var $wrapper = $(document.createElement('div'))
 										.addClass(options.wrapper_class)
 										.appendTo(root)
 										.css(options.wrapper_style)
 										.append(fragment);
+									
+									if (options.clearfix) {
+										$wrapper.addClass('clearfix');
+									}
 								})(this);
 								break;
 							case 'grid':
@@ -89,8 +94,8 @@
 						
 						// attach handlers to listitems
 						$('.' + options.listitem_class)
-							.on('mouseenter', options.listitem_hover.in)
-							.on('mouseleave', options.listitem_hover.out)
+							.on('mouseenter', options.listitem_hover['in'])
+							.on('mouseleave', options.listitem_hover['out'])
 							.on('click', options.listitem_click);
 					}
 					break;
