@@ -1,4 +1,4 @@
-jquery.listerine.js
+# jquery.listerine.js
 
 @author gehsekky
 
@@ -24,42 +24,41 @@ options (possible values):
 
 columns example:
 
-  $('.list_container').listerine({
-    cols: 3, 
-    transform: 'columns'
-  });
+    $('.list_container').listerine({
+      cols: 3, 
+      transform: 'columns'
+    });
 
 grid example:
 
-  $('.list_container').listerine({
-    transform: 'grid', 
-    listitem_style: {
-      'width': '200px',
-      'min-height': '50px', 
-      'margin': '0px 10px 10px 0px', 
-      'background-color': '#eee'
-    }, 
-    listitem_hover: {
-      in: function () {
-        var $this = $(this);
-        $this.css('background-color', '#fff');
+    $('.list_container').listerine({
+      transform: 'grid', 
+      listitem_style: {
+        'width': '200px',
+        'min-height': '50px', 
+        'margin': '0px 10px 10px 0px', 
+        'background-color': '#eee'
       }, 
-      out: function () {
-        var $this = $(this);
-        $this.css('background-color', '#eee');
+      listitem_hover: {
+        in: function () {
+          var $this = $(this);
+          $this.css('background-color', '#fff');
+        }, 
+        out: function () {
+          var $this = $(this);
+          $this.css('background-color', '#eee');
+        }
       }
-    }
-  });
-
+    });
 
 html:
 
-  <div class="list_container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-    <div>7</div>
-  </div>
+    <div class="list_container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+    </div>
