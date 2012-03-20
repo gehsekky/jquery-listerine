@@ -6,6 +6,11 @@ Listerine has 2 modes. One is “columns” which basically creates a user-set
 number of columns on the page and then evenly distributes the list items 
 between columns. The other mode is “grid” which is more of a tile-like display.
 
+TODO:
+
+* change hover in/out to something that won't cause issues (ie. hoverin/hoverout)
+* apply local clearfix somehow instead of just adding "clearfix" class
+* ability to pass in list of classnames to apply to list items, columns, or wrapper
 
 options (possible values):
 
@@ -40,11 +45,11 @@ grid example:
         'background-color': '#eee'
       }, 
       listitem_hover: {
-        in: function () {
+        'in': function () {
           var $this = $(this);
           $this.css('background-color', '#fff');
         }, 
-        out: function () {
+        'out': function () {
           var $this = $(this);
           $this.css('background-color', '#eee');
         }
